@@ -17,7 +17,7 @@ class Extractor:
         """
         self.maxRows = self.sheet.max_row
 
-    def extractEmailAddress(self):
+    def extractAllEmailAddress(self):
         emailAddresses = []
         for i in range(2, self.maxRows + 1):
             emailAddress = self.sheet.cell(row=i, column=4).value
@@ -27,7 +27,7 @@ class Extractor:
 
         return emailAddresses
 
-    def extractByTeam(self, teamName):
+    def extractRecordByTeam(self, teamName):
         teamData = []
         teamColumn = 3
 
@@ -43,3 +43,23 @@ class Extractor:
                 teamData.append(member)
 
         return teamData
+
+    def extractAllTeamRecords(self):
+        teamDict = {}
+        teamNames = ["Corporate", "Operations", "Publications", "Promotions", "Logistics"]
+        teamColumn = 3
+
+        for team in teamNames:
+            teamData = []
+            for i in range(2, self.maxRows + 1):
+                # check for team name match
+                if self.sheet.cell(row=i, column=teamColumn).value == team:
+                    name = self.sheet.cell(row=i, column=1).value
+                    nsuID = self.sheet.cell(row=i, column=2).value
+                    email = self.sheet.cell(row=i, column=4).value
+
+                    # create a Member object
+                    member = Member(name=name, nsuId=nsuID, team=team, email=email)
+                    teamData.append(member)
+
+            teamDict[team] = teamData
