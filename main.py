@@ -32,11 +32,11 @@ for teamName in teamNames:
 
     recWriter.writeRecords(text_file=recordsFile, records=records)
 
-print(stats)
+# print(stats)
 total = 0
 print("===================Stats :::::::::::::: Summer 17 ===================")
 for t in teamNames:
     print("\t\t{} : {}".format(t, stats[t]))
     total = total + stats[t]
 
-print("\t\tTotal Recruited : {}".format(total))
+print("\n\t\tTotal Recruited : {}".format(total))
