@@ -65,3 +65,15 @@ class Extractor:
             teamDict[team] = teamData
 
         return teamDict
+
+    def getEmailByTeam(self, teamName):
+        teamMail = []
+        teamColumn = 3
+
+        for i in range(2, self.maxRows + 1):
+            # check for team name match
+            if self.sheet.cell(row=i, column=teamColumn).value == teamName:
+                email = self.sheet.cell(row=i, column=4).value
+                teamMail.append(email)
+
+        return teamMail
