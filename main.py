@@ -22,14 +22,11 @@ mail_list = extractor.extractAllEmailAddress()
 # recWriter.writeRecords(text_file=mailingListFile, records=mail_list)
 
 
-# get team records by name
+# get team records by name and write mail lists or full info
+# writing mailing lists here
 teamNames = ["Corporate", "Operations", "Publications", "Promotions", "Logistics"]
 # dictionary for team records
 teamDict = {}
 
 for team in teamNames:
-    teamRecords = extractor.extractRecordByTeam(teamName=team)
-    teamDict[team] = teamRecords
-
-# write mailing list
-for team in teamNames
+    teamDict = extractor.extractAllTeamRecords()

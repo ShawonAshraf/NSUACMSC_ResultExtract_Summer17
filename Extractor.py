@@ -63,3 +63,5 @@ class Extractor:
                     teamData.append(member)
 
             teamDict[team] = teamData
+
+        return teamDict
