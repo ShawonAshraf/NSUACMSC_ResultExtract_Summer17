@@ -1,5 +1,6 @@
 from Extractor import Extractor
 from InfoToTextFile import RecordEntry
+from Stats import Stats
 
 excelFile = "FinalResult.xlsx"
 mailingListFile = "Mailing/MailingList.txt"
@@ -26,19 +27,5 @@ recWriter.writeRecords(text_file=mailingListFile, records=mail_list)
 teamNames = ["Corporate", "Operations", "Publications", "Promotions", "Logistics"]
 
 # for stats
-stats = {}
-total = 0
-
-for teamName in teamNames:
-    teamMailingFile = "Mailing/{}.txt".format(teamName)
-    mail_list = extractor.getEmailByTeam(teamName=teamName)
-    recWriter.writeRecords(text_file=teamMailingFile, records=mail_list)
-
-    total = total + len(mail_list)
-    stats[teamName] = len(mail_list)
-
-print("====================STATS=====================")
-print("===================Summer17===================")
-print("\n\nTotal recruited : {}\n".format(total))
-for teamName in teamNames:
-    print("{} : {}".format(teamName, stats[teamName]))
+stats = Stats()
+stats.getAllStats(workbook=excelFile)

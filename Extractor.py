@@ -38,6 +38,9 @@ class Extractor:
                 nsuID = self.sheet.cell(row=i, column=2).value
                 email = self.sheet.cell(row=i, column=4).value
 
+                if email == None:
+                    email = "N/A"
+
                 # create a Member object
                 member = Member(name=name, nsuId=nsuID, team=teamName, email=email)
                 teamData.append(member)
