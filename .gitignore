@@ -549,3 +549,4 @@ paket-files/
 # ignore data files
 *.txt
 *.xlsx
+*.csv
